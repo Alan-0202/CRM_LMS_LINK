@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoGIN</title>
+    <script src="/static/js/jquery-3.5.1.min.hs"></script>
+    <script>
+        $(function({
+            $('#button').click(function(){
+                username = $('#username').val()
+                password = $('#password').val()
+                $.ajax({
+                    'url': '/login_check',
+                    'type': 'post',
+                    'data': {'username':username, 'password':password},
+                    'dataType': 'json'
+                })
+                .done(function (data)){
+                    if(data.res == 0){
+                        $('#message').show().html("failed")
+                    }
+                    else{
+                        location.href = '/index'
+                    }
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<form method="post" action="/login_check">
+    {% csrf_token %}
+    UserName: <input type="text" name="username">
+    PassWord: <input type="password" name="password">
+    <input type="submit" value="Submit" id="button">
+</form>
+<div id="message"></div>
+
+</body>
+</html>

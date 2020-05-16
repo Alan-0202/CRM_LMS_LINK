@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Books information</title>
+</head>
+<body>
+<p><a href="/create">NEW ONE</a>></p>
+<ul>
+    {% for book in books %}
+    <li>{{ book.bittle }} ----> <a href="/delete{{ book.id }}">Delete</a>></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

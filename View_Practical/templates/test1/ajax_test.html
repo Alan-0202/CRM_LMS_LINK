@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX_TEST</title>
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>-->
+    <script>
+        $(function(){
+            $('#btnAjax').click(function(){
+                $.ajax({
+                    'url': '/ajax_handle',
+                    'dataType': 'json'
+                })
+                .done(function (data) {
+                    if (data.res == 1){
+                        $('#message').show().html('Informed Information!!!')
+                    }
+                })
+
+            })
+        })
+
+    </script>>
+    <style>
+        #message {
+            display: none;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="submit" value="Ajax_Request" id="btnAjax">
+    <br><br>
+    <div id="message"></div>
+</body>
+</html>

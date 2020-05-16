@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LIST</title>
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function(){
+            $.get('/prov', function (data){
+<!--                1.Get data-->
+                res = data.data
+<!--                2.Get position of select tag-->
+                bookname_tag = $('#bookname')
+
+<!--                3.list data-->
+                for(i=0; i<res.length; i++){
+                    bookname = res[i][0]
+                    bookdate = res[i][1]
+                    option_str = '<option>'+ bookname +'</option>'
+
+                    bookname_tag.append(option_str)
+
+                }
+            })
+        })
+
+
+    </script>
+
+</head>
+<body>
+<select id="bookname">
+    <option>BOOKS NAME</option>
+
+
+</select id="bookpublicdate">
+<select>
+    <option>DATE</option>
+
+</select>
+</body>
+</html>
